@@ -38,7 +38,25 @@ const getDBInfo = async function () {
 
 const getAllInfo = async function () {
   const apiInfoAll = await getApiInfo();
-  const dbInfoAll = await getDBInfo();
+  let dbInfoAll = await getDBInfo();
+  dbInfoAll = await dbInfoAll.map((el) => {
+    return {
+      id: el.id,
+      name: el.name,
+      heightMin: el.heightMin,
+      heightMax: el.heightMax,
+      weightMin: el.weightMin,
+      weightMax: el.weightMax,
+      life_span: el.life_span,
+      createdAt: el.createdAt,
+      updatedAt: el.updatedAt,
+      temperament: el.temperaments
+        .map((el) => {
+          return el.name;
+        })
+        .join(", "),
+    };
+  });
   const allInfo = apiInfoAll.concat(dbInfoAll);
   return allInfo;
 };

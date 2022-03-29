@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const id = req.params.id;
+    const { id } = req.params;
     const ApiDogInfo = await getAllInfo();
     let DogId = ApiDogInfo.find((el) => parseInt(el.id) === parseInt(id));
     if (DogId) {
