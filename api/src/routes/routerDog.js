@@ -26,13 +26,10 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id;
     const ApiDogInfo = await getAllInfo();
-    if (id) {
-      let DogId = await ApiDogInfo.find(
-        (el) => parseInt(el.id) === parseInt(id)
-      );
-      console.log(DogId);
+    let DogId = ApiDogInfo.find((el) => parseInt(el.id) === parseInt(id));
+    if (DogId) {
       res.status(200).send(DogId);
     } else {
       res.status(400).send("The Dog id doesn't exist");
