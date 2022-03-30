@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
     //   where: { name: temperaments }, //Donde el name sea igual al temperament que me llega por body
     // }); //Esto lo traigo del modelo de Temperament
     // createdDog.addTemperament(temperamentDb); //add es un metodo de sequelize que me trae de la tabla el parametro que le paso como parametro en este caso de Temperament
-    res.send("Dog successfully created!!!");
+    res.status(200).send("Dog successfully created!!!");
   } catch (error) {
     console.log(error);
   }
