@@ -6,7 +6,8 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     let AllTempsFromDb = await ApiToDbTemps();
-    res.status(200).send(AllTempsFromDb);
+    // console.log(await ApiToDbTemps());
+    res.status(200).json(AllTempsFromDb);
   } catch (error) {
     console.log(error);
   }

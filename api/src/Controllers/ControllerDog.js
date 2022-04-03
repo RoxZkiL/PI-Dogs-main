@@ -27,11 +27,11 @@ const getDBInfo = async function () {
     //Con findAll me traigo toda la informacion de la base de datos
     include: {
       model: Temperament, //Esta informacion tiene que incluir el modelo Temperament para que haga la relacion
-      attributes: ["name"], // Traemos el atributo nombre que es lo que nos interesa, trae el perro y el atributo de su temperamento
-      through: {
-        //mediante los atributos (va siempre)
-        attributes: [],
-      },
+      // attributes: ["name"], // Traemos el atributo nombre que es lo que nos interesa, trae el perro y el atributo de su temperamento
+      // through: {
+      //   //mediante los atributos (va siempre)
+      //   attributes: [],
+      // },
     },
   });
 };
@@ -48,8 +48,6 @@ const getAllInfo = async function () {
       weightMin: el.weightMin,
       weightMax: el.weightMax,
       life_span: el.life_span,
-      createdAt: el.createdAt,
-      updatedAt: el.updatedAt,
       temperament: el.temperaments
         .map((el) => {
           return el.name;
@@ -63,4 +61,5 @@ const getAllInfo = async function () {
 
 module.exports = {
   getAllInfo,
+  getDBInfo,
 };
