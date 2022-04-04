@@ -5,6 +5,8 @@ import {
   orderByWeight,
   orderAlphabetically,
   createdInDb,
+  getTemperaments,
+  filteredByTemperament,
 } from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
@@ -19,12 +21,20 @@ export default function Home() {
   const FirstDogIndex = LastDogIndex - dogsPerPage;
   const currentDogs = allDogs.slice(FirstDogIndex, LastDogIndex);
   const [order, setOrder] = useState("");
+  const allTemperaments = useSelector((state) => state.temperaments);
 
   const paginated = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  function handleTemperament(e) {
+    dispatch(filteredByTemperament(e.target.value));
+    setCurrentPage(1);
+    setOrder(e.target.value);
+  }
+
   useEffect(() => {
+    dispatch(getTemperaments());
     dispatch(getAllDogs());
   }, [dispatch]);
 
@@ -76,8 +86,21 @@ export default function Home() {
           <option value="weightMin">Min weight</option>
           <option value="weightMax">Max weight</option>
         </select>
-        <select>
-          <option value="temperamentos">All temperament</option>
+        {/* <select>
+          <option value="temperamentos">All temperaments</option>
+        </select> */}
+        <select
+          onChange={(e) => {
+            handleTemperament(e);
+          }}
+        >
+          <option>All temperaments</option>
+          {allTemperaments &&
+            allTemperaments.map((el) => (
+              <option value={el.name} key={el.id}>
+                {el.name}
+              </option>
+            ))}
         </select>
         <select onChange={(e) => handleCreatedDb(e)}>
           <option>Filtered dogs</option>

@@ -72,10 +72,10 @@ function rootReducer(state = initialState, action) {
         ...state,
         dogs: orderedDogs,
       };
-    case "CREATED_IN_DB":
+    case "ORDER_BY_CREATION":
       let doggies;
       if (action.payload === "apiDogs") {
-        let dogsApi = state.allDogs;
+        let dogsApi = state.allDogs; //.filter((e) => e.id < 300);
         doggies = dogsApi;
       }
       if (action.payload === "dbDogs") {
@@ -86,7 +86,20 @@ function rootReducer(state = initialState, action) {
         ...state,
         dogs: doggies,
       };
-
+    case "GET_TEMPERAMENTS":
+      return {
+        ...state,
+        temperaments: action.payload,
+      };
+    case "FILTERED_BY_TEMP":
+      const filteredDogies = state.allDogs.filter((el) => {
+        if (el.temperament && el.temperament.includes(action.payload))
+          return el;
+      });
+      return {
+        ...state,
+        dogs: filteredDogies,
+      };
     default:
       return state;
   }
