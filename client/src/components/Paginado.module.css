@@ -1,0 +1,8 @@
+.paginado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    list-style-type: none;
+    background-color: rgba(70, 70, 70, 0.622);
+  }

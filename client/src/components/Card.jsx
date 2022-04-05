@@ -1,5 +1,7 @@
 import React from "react";
 
+import style from "./Card.module.css";
+
 export default function Card({
   id,
   image,
@@ -9,8 +11,8 @@ export default function Card({
   temperament,
 }) {
   return (
-    <div key={id}>
-      <img src={image} alt="img not found" />
+    <div className={style.card} key={id}>
+      <img className={style.img} src={image} alt="img not found" />
       <h3>{name}</h3>
       <h5>{temperament}</h5>
       <h5>{weightMin}</h5>

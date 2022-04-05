@@ -11,6 +11,7 @@ router.post("/", async (req, res) => {
       weightMin,
       weightMax,
       life_span,
+      image,
       temperament,
     } = req.body;
     const createdDog = await Dog.create({
@@ -20,10 +21,11 @@ router.post("/", async (req, res) => {
       weightMin,
       weightMax,
       life_span,
+      image,
     }); //Estos son los datos que me llegan por body
     temperament.map(async (el) => {
       try {
-        let [id1, b1] = await Temperament.findOrCreate({
+        let [id1, b1] = await Temperament.findAll({
           //encontramos el temperamento "el"
           where: { name: el },
         });
@@ -41,5 +43,9 @@ router.post("/", async (req, res) => {
     console.log(error);
   }
 });
+// let temperametNewDog = await Temperament.findAll({
+//   where: { name: temperament },
+// });
+// createdDog.addTemperament(temperametNewDog);
 
 module.exports = router;

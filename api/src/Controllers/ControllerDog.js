@@ -48,6 +48,7 @@ const getAllInfo = async function () {
       weightMin: el.weightMin,
       weightMax: el.weightMax,
       life_span: el.life_span,
+      image: el.image,
       temperament: el.temperaments
         .map((el) => {
           return el.name;
