@@ -3,6 +3,7 @@ import axios from "axios";
 export function getAllDogs() {
   return async function (dispatch) {
     let dogs = await axios.get("http://localhost:3001/dogs");
+    console.log(dogs);
     return dispatch({
       type: "GET_DOGS",
       payload: dogs.data,
@@ -44,7 +45,6 @@ export function getTemperaments() {
 export function getCreatedDogs(payload) {
   return async function (dispatch) {
     let postDog = await axios.post("http://localhost:3001/dog", payload);
-    console.log(payload);
     return postDog;
     // return dispatch({
     //   type: "POST_DOG",
@@ -69,6 +69,21 @@ export function getDogsByQuery(payload) {
       return dispatch({
         type: "GET_DOGS_NAME",
         payload: dogNames.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("Dog not found");
+    }
+  };
+}
+
+export function getDetails(payload) {
+  return async function (dispatch) {
+    try {
+      const details = await axios.get(`http://localhost:3001/dogs/${payload}`);
+      return dispatch({
+        type: "GET_DETAILS",
+        payload: details.data,
       });
     } catch (error) {
       console.log(error);

@@ -13,7 +13,6 @@ import Card from "./Card";
 import Paginated from "./Paginado";
 import SearchBar from "./SearchBar";
 import style from "./Home.module.css";
-import styles from "./Paginado.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -70,15 +69,18 @@ export default function Home() {
 
   return (
     <div>
-      <Link to="/dogs"></Link>
       <h1>PI DOGGOS</h1>
+      <Link to="/dogs" />
       <button
         onClick={(e) => {
           handleClick(e);
         }}
       >
-        cargar todos los doggies
+        Render all dogs
       </button>
+      <Link to="/dog">
+        <button>Create a new dog</button>
+      </Link>
       <div>
         <select onChange={(e) => handerSortAlphabetically(e)} value="disabled">
           <option value="">Order Alphabetically</option>
@@ -124,16 +126,17 @@ export default function Home() {
         {currentDogs?.map((el) => {
           return (
             <div key={el.id}>
-              <Link to={"/home/" + el.id}>
-                <Card
-                  key={el.id}
-                  id={el.id}
-                  name={el.name}
-                  image={el.image}
-                  weightMin={el.weightMin}
-                  weightMax={el.weightMax}
-                  temperament={el.temperament}
-                />
+              <Card
+                key={el.id}
+                id={el.id}
+                name={el.name}
+                image={el.image}
+                weightMin={el.weightMin}
+                weightMax={el.weightMax}
+                temperament={el.temperament}
+              />
+              <Link to={`/home/${el.id}`}>
+                <button>Dog info</button>
               </Link>
             </div>
           );

@@ -17,6 +17,7 @@ export default function CreatedDog() {
     image: "",
     temperament: [],
   });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     dispatch(getTemperaments());
@@ -27,23 +28,37 @@ export default function CreatedDog() {
       ...input,
       [e.target.name]: e.target.value,
     });
+    setErrors(validate({ ...input, [e.target.name]: e.target.value }));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getCreatedDogs(input));
-    alert("¡Dog successfully created!");
-    setInput({
-      name: "",
-      heightMin: "",
-      heightMax: "",
-      weightMin: "",
-      weightMax: "",
-      life_span: "",
-      image: "",
-      temperament: [],
-    });
-    navigate("/home");
+    if (
+      input.name &&
+      input.heightMin &&
+      input.heightMax &&
+      input.weightMin &&
+      input.weightMax &&
+      input.life_span &&
+      input.image &&
+      input.temperament
+    ) {
+      dispatch(getCreatedDogs(input));
+      alert("¡Dog successfully created!");
+      setInput({
+        name: "",
+        heightMin: "",
+        heightMax: "",
+        weightMin: "",
+        weightMax: "",
+        life_span: "",
+        image: "",
+        temperament: [],
+      });
+      navigate("/home");
+    } else {
+      alert("All information about the new dog must be completed");
+    }
   }
 
   function handleSelect(e) {
@@ -69,6 +84,7 @@ export default function CreatedDog() {
               name="name"
               value={input.name}
             />
+            {errors.name && <p>{errors.name}</p>}
           </label>
         </div>
         <div>
@@ -80,6 +96,7 @@ export default function CreatedDog() {
               name="heightMin"
               value={input.heightMin}
             />
+            {errors.heightMin && <p>{errors.heightMin}</p>}
           </label>
         </div>
         <div>
@@ -91,6 +108,7 @@ export default function CreatedDog() {
               name="heightMax"
               value={input.heightMax}
             />
+            {errors.heightMax && <p>{errors.heightMax}</p>}
           </label>
         </div>
         <div>
@@ -102,6 +120,7 @@ export default function CreatedDog() {
               name="weightMin"
               value={input.weightMin}
             />
+            {errors.weightMin && <p>{errors.weightMin}</p>}
           </label>
         </div>
         <div>
@@ -113,6 +132,7 @@ export default function CreatedDog() {
               name="weightMax"
               value={input.weightMax}
             />
+            {errors.weightMax && <p>{errors.weightMax}</p>}
           </label>
         </div>
         <div>
@@ -124,6 +144,7 @@ export default function CreatedDog() {
               name="life_span"
               value={input.life_span}
             />
+            {errors.life_span && <p>{errors.life_span}</p>}
           </label>
         </div>
         <div>
@@ -135,6 +156,7 @@ export default function CreatedDog() {
               name="image"
               value={input.image}
             />
+            {errors.image && <p>{errors.image}</p>}
           </label>
         </div>
         <div>
@@ -145,7 +167,9 @@ export default function CreatedDog() {
               type="text"
               name="temperament"
               value={input.temperament}
+              disabled
             />
+            {errors.temperament && <p>{errors.temperament}</p>}
           </label>
         </div>
         <select onChange={(e) => handleSelect(e)}>
@@ -162,4 +186,57 @@ export default function CreatedDog() {
       </form>
     </div>
   );
+}
+
+function validate(input) {
+  let errors = {};
+  if (!input.name) {
+    errors.name = "Name is required";
+    // } else if (!/\S+@\S+\.\S+/.test(input.name)) {
+    //   errors.name = "Name is invalid";
+  }
+
+  if (!input.heightMin) {
+    errors.heightMin = "Minimun height is required";
+    // } else if (!/(?=.*[0-9])/.test(input.heightMin)) {
+    //   errors.heightMin = "Minimun height is invalid (should be a number)";
+  }
+
+  if (!input.heightMax) {
+    errors.heightMax = "Maximun height is required";
+    // } else if (!/(?=.*[0-9])/.test(input.heightMax)) {
+    //   errors.heightMax = "Maximun height is invalid (should be a number)";
+  }
+
+  if (!input.weightMin) {
+    errors.weightMin = "Minimun weight is required";
+    // } else if (!/(?=.*[0-9])/.test(input.weightMin)) {
+    //   errors.weightMin = "Minimun weight is invalid (should be a number)";
+  }
+
+  if (!input.weightMax) {
+    errors.weightMax = "Maximun weight is required";
+    // } else if (!/(?=.*[0-9])/.test(input.weightMax)) {
+    //   errors.weightMax = "Maximun weight is invalid (should be a number)";
+  }
+
+  if (!input.life_span) {
+    errors.life_span = "Life span is required";
+    // } else if (!/(?=.*[0-9])/.test(input.life_span)) {
+    //   errors.life_span = "Life span  is invalid";
+  }
+
+  if (!input.image) {
+    errors.image = "Image url is required";
+    // } else if (!/(?=.*[0-9])/.test(input.image)) {
+    //   errors.image = "Image url is invalid";
+  }
+
+  if (!input.temperament) {
+    errors.temperament = "Temperemnts are required";
+    // } else if (!/(?=.*[0-9])/.test(input.temperament)) {
+    //   errors.temperament = "Temperemnts are invalid";
+  }
+
+  return errors;
 }
