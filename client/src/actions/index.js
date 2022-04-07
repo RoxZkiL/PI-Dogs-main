@@ -3,7 +3,6 @@ import axios from "axios";
 export function getAllDogs() {
   return async function (dispatch) {
     let dogs = await axios.get("http://localhost:3001/dogs");
-    console.log(dogs);
     return dispatch({
       type: "GET_DOGS",
       payload: dogs.data,
@@ -42,21 +41,17 @@ export function getTemperaments() {
   };
 }
 
-export function getCreatedDogs(payload) {
-  return async function (dispatch) {
-    let postDog = await axios.post("http://localhost:3001/dog", payload);
-    return postDog;
-    // return dispatch({
-    //   type: "POST_DOG",
-    //   payload: postDog.data,
-    // });
-  };
-}
-
 export function filteredByTemperament(payload) {
   return {
     type: "FILTERED_BY_TEMP",
     payload,
+  };
+}
+
+export function getCreatedDogs(payload) {
+  return async function (dispatch) {
+    let postDog = await axios.post("http://localhost:3001/dog", payload);
+    return postDog;
   };
 }
 

@@ -28,7 +28,9 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const ApiDogInfo = await getAllInfo();
-    let DogId = ApiDogInfo.find((el) => parseInt(el.id) === parseInt(id));
+    console.log("id", id);
+    console.log("apidoginfo", ApiDogInfo[100].id);
+    let DogId = ApiDogInfo.find((el) => el.id === id);
     if (DogId) {
       res.status(200).send(DogId);
     } else {

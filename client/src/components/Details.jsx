@@ -8,18 +8,16 @@ export default function Details() {
   const details = useSelector((state) => state.details);
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log("ID", details);
-  console.log("DETAIlS", details);
 
   useEffect(() => {
-    dispatch(cleaner());
     dispatch(getDetails(id));
+    dispatch(cleaner());
   }, [dispatch, id]);
 
   if (details) {
     return (
       <div>
-        <img src={details.image} />
+        <img src={details.image} alt="Not found" />
         <h2>I am {details.name} </h2>
         <h5>Min weight: {details.weightMin} </h5>
         <h5>Max weight: {details.weightMax} </h5>

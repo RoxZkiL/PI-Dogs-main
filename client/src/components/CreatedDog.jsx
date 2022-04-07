@@ -36,12 +36,13 @@ export default function CreatedDog() {
     if (
       input.name &&
       input.heightMin &&
-      input.heightMax &&
-      input.weightMin &&
-      input.weightMax &&
-      input.life_span &&
-      input.image &&
-      input.temperament
+      !isNaN(input.heightMin) &&
+      !isNaN(input.heightMax) &&
+      !isNaN(input.weightMin) &&
+      !isNaN(input.weightMax) &&
+      input.life_span.includes("years") &&
+      input.image.includes("https://") &&
+      input.temperament.length !== 0
     ) {
       dispatch(getCreatedDogs(input));
       alert("¡Dog successfully created!");
@@ -57,7 +58,9 @@ export default function CreatedDog() {
       });
       navigate("/home");
     } else {
-      alert("All information about the new dog must be completed");
+      alert(
+        "All information about the new dog must be completed and must be valid"
+      );
     }
   }
 
@@ -83,6 +86,7 @@ export default function CreatedDog() {
               type="text"
               name="name"
               value={input.name}
+              required
             />
             {errors.name && <p>{errors.name}</p>}
           </label>
@@ -95,6 +99,7 @@ export default function CreatedDog() {
               type="text"
               name="heightMin"
               value={input.heightMin}
+              required
             />
             {errors.heightMin && <p>{errors.heightMin}</p>}
           </label>
@@ -107,6 +112,7 @@ export default function CreatedDog() {
               type="text"
               name="heightMax"
               value={input.heightMax}
+              required
             />
             {errors.heightMax && <p>{errors.heightMax}</p>}
           </label>
@@ -119,6 +125,7 @@ export default function CreatedDog() {
               type="text"
               name="weightMin"
               value={input.weightMin}
+              required
             />
             {errors.weightMin && <p>{errors.weightMin}</p>}
           </label>
@@ -131,6 +138,7 @@ export default function CreatedDog() {
               type="text"
               name="weightMax"
               value={input.weightMax}
+              required
             />
             {errors.weightMax && <p>{errors.weightMax}</p>}
           </label>
@@ -143,6 +151,7 @@ export default function CreatedDog() {
               type="text"
               name="life_span"
               value={input.life_span}
+              required
             />
             {errors.life_span && <p>{errors.life_span}</p>}
           </label>
@@ -155,6 +164,7 @@ export default function CreatedDog() {
               type="text"
               name="image"
               value={input.image}
+              required
             />
             {errors.image && <p>{errors.image}</p>}
           </label>
@@ -168,6 +178,7 @@ export default function CreatedDog() {
               name="temperament"
               value={input.temperament}
               disabled
+              required
             />
             {errors.temperament && <p>{errors.temperament}</p>}
           </label>
@@ -192,51 +203,46 @@ function validate(input) {
   let errors = {};
   if (!input.name) {
     errors.name = "Name is required";
-    // } else if (!/\S+@\S+\.\S+/.test(input.name)) {
-    //   errors.name = "Name is invalid";
   }
 
   if (!input.heightMin) {
     errors.heightMin = "Minimun height is required";
-    // } else if (!/(?=.*[0-9])/.test(input.heightMin)) {
-    //   errors.heightMin = "Minimun height is invalid (should be a number)";
+  } else if (!/^([0-9])*$/.test(input.heightMin)) {
+    errors.heightMin = "Minimun height should be a number";
   }
 
   if (!input.heightMax) {
     errors.heightMax = "Maximun height is required";
-    // } else if (!/(?=.*[0-9])/.test(input.heightMax)) {
-    //   errors.heightMax = "Maximun height is invalid (should be a number)";
+  } else if (!/^([0-9])*$/.test(input.heightMax)) {
+    errors.heightMax = "Maximun height should be a number";
   }
 
   if (!input.weightMin) {
     errors.weightMin = "Minimun weight is required";
-    // } else if (!/(?=.*[0-9])/.test(input.weightMin)) {
-    //   errors.weightMin = "Minimun weight is invalid (should be a number)";
+  } else if (!/^([0-9])*$/.test(input.weightMin)) {
+    errors.weightMin = "Minimun weight should be a number";
   }
 
   if (!input.weightMax) {
     errors.weightMax = "Maximun weight is required";
-    // } else if (!/(?=.*[0-9])/.test(input.weightMax)) {
-    //   errors.weightMax = "Maximun weight is invalid (should be a number)";
+  } else if (!/^([0-9])*$/.test(input.weightMax)) {
+    errors.weightMax = "Maximun weight should be a number";
   }
 
   if (!input.life_span) {
     errors.life_span = "Life span is required";
-    // } else if (!/(?=.*[0-9])/.test(input.life_span)) {
-    //   errors.life_span = "Life span  is invalid";
+  } else if (!input.life_span.includes("years")) {
+    errors.life_span = "The age of the dog must include the word (years)";
   }
 
   if (!input.image) {
     errors.image = "Image url is required";
-    // } else if (!/(?=.*[0-9])/.test(input.image)) {
-    //   errors.image = "Image url is invalid";
+  } else if (!input.image.includes("years")) {
+    errors.image = "The image should have a valir url (format https://)";
   }
 
   if (!input.temperament) {
     errors.temperament = "Temperemnts are required";
-    // } else if (!/(?=.*[0-9])/.test(input.temperament)) {
-    //   errors.temperament = "Temperemnts are invalid";
   }
-
   return errors;
 }

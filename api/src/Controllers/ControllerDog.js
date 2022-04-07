@@ -8,7 +8,7 @@ const getApiInfo = async function () {
     const heightAPI = el.height.metric.split("-");
     const weightAPI = el.weight.metric.split("-");
     return {
-      id: el.id,
+      id: `${el.id}`,
       name: el.name,
       heightMin: parseInt(heightAPI[0]) ? parseInt(heightAPI[0]) : "",
       heightMax: parseInt(heightAPI[1]) ? parseInt(heightAPI[1]) : "",

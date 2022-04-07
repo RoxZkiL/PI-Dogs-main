@@ -76,11 +76,11 @@ function rootReducer(state = initialState, action) {
     case "ORDER_BY_CREATION":
       let doggies;
       if (action.payload === "apiDogs") {
-        let dogsApi = state.allDogs.filter((e) => e.id < 300);
+        let dogsApi = state.allDogs.filter((e) => e.id.length < 4);
         doggies = dogsApi;
       }
       if (action.payload === "dbDogs") {
-        let dogsDb = state.allDogs.filter((e) => e.id.includes > "-");
+        let dogsDb = state.allDogs.filter((e) => e.id.length > 6);
         doggies = dogsDb;
       }
       return {
