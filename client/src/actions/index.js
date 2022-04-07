@@ -90,3 +90,10 @@ export function getDetails(payload) {
     }
   };
 }
+
+export function cleaner() {
+  return {
+    type: "CLEANER",
+    payload: {},
+  };
+}
