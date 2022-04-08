@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 .body {
-    background: url("https://wallpapercave.com/wp/9wGi1BG.jpg");
+    background: url("file:///D:/Descargas%20Chrome/peakpx%20(1).jpg");
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,26 +10,50 @@
     justify-content: center;
   }
 
-  .h1{
-    font-family: 'Ultra', serif;
-    font-size: 100px;
-  }
+  .neons {
+    margin-top: 10rem;
+    text-align: center;
+    font-size: 7rem;
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    font-weight: bold;
+    -webkit-animation: glow 2s ease-in-out infinite alternate;
+    -moz-animation: glow 2s ease-in-out infinite alternate;
+    animation: glow 2s ease-in-out infinite alternate;
+ }
+ 
+ @keyframes glow {
+    from {
+       color: #fff;
+       text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2,
+          0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2,
+          0 0 90px #00fff2;
+    }
+ 
+    to {
+       color: rgba(238, 0, 255, 0.645);
+       text-shadow: 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2,
+          0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 80px #00fff2,
+          0 1 90px #00fff2;
+    }
+ }
 
 
       .button {
-        background: linear-gradient(-45deg, #3f00b5, #9f69fe, #27c8b7, #3f00b5);
+        background: linear-gradient(-45deg, #6b2ddf, #9f69fe, #27c8b7, #4f02de);
         background-size: 800% 400%;
-        padding: 1em 2em;
+        font-family: 'Creepster', cursive;
         display: inline-block;
         border: none;
-        border-radius: 10px;
-        font-size: 17px;
+        border-radius: 30px;
+        text-shadow: 0 0 10px rgb(255, 255, 255);
+        font-size: 40px;
         font-weight: 700;
-        color: white;
+        color: rgb(0, 0, 0);
         transition: all .5s ease-in-out;
         animation: gradient 10s infinite cubic-bezier(.62, .28, .23, .99) both;
-        width: 400px;
-        height: 100px;
+        width: 300px;
+        height: 80px;
         cursor: pointer;
        }
        
@@ -55,3 +80,4 @@
          background-position: 0% 50%;
         }
        }
+

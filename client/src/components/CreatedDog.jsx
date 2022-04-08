@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments, getCreatedDogs } from "../actions";
+import style from "./CreatedDog.module.css";
 
 export default function CreatedDog() {
   const dispatch = useDispatch();
@@ -65,114 +66,144 @@ export default function CreatedDog() {
   }
 
   function handleSelect(e) {
-    setInput({
-      ...input,
-      temperament: [...input.temperament, e.target.value],
-    });
+    if (input.temperament.length < 4) {
+      setInput({
+        ...input,
+        temperament: [...input.temperament, e.target.value],
+      });
+      let temps = input.temperament;
+      let findTemp = temps.indexOf(e.target.value);
+      if (findTemp >= 0) {
+        temps.splice(findTemp, 1);
+      } else {
+        temps.push(e.target.value);
+      }
+      setInput({
+        ...input,
+        temperament: temps,
+      });
+    } else {
+      alert("You can select only 4 temperaments");
+    }
   }
 
   return (
     <div>
-      <Link to="/home">
-        <button>Go back</button>
-      </Link>
-      <h1>Create your dog</h1>
+      <h1 className={style.h1}>CREATE YOUR OWN DOG</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
-          <label>
-            Name -
+          <label className={style.text}>
+            Dog Name -
             <input
+              className={style.input}
               onChange={(e) => handleInputChange(e)}
               type="text"
               name="name"
               value={input.name}
               required
             />
-            {errors.name && <p>{errors.name}</p>}
+            {errors.name && <p className={style.validation}>{errors.name}</p>}
           </label>
         </div>
         <div>
-          <label>
+          <label className={style.text}>
             Minimun Height -
             <input
+              className={style.input}
               onChange={(e) => handleInputChange(e)}
               type="text"
               name="heightMin"
               value={input.heightMin}
               required
             />
-            {errors.heightMin && <p>{errors.heightMin}</p>}
+            {errors.heightMin && (
+              <p className={style.validation}>{errors.heightMin}</p>
+            )}
           </label>
         </div>
         <div>
-          <label>
+          <label className={style.text}>
             Maximun Height -
             <input
+              className={style.input}
               onChange={(e) => handleInputChange(e)}
               type="text"
               name="heightMax"
               value={input.heightMax}
               required
             />
-            {errors.heightMax && <p>{errors.heightMax}</p>}
+            {errors.heightMax && (
+              <p className={style.validation}>{errors.heightMax}</p>
+            )}
           </label>
         </div>
         <div>
-          <label>
+          <label className={style.text}>
             Minimun Weight -
             <input
+              className={style.input}
               onChange={(e) => handleInputChange(e)}
               type="text"
               name="weightMin"
               value={input.weightMin}
               required
             />
-            {errors.weightMin && <p>{errors.weightMin}</p>}
+            {errors.weightMin && (
+              <p className={style.validation}>{errors.weightMin}</p>
+            )}
           </label>
         </div>
         <div>
-          <label>
+          <label className={style.text}>
             Maximun Weight -
             <input
+              className={style.input}
               onChange={(e) => handleInputChange(e)}
               type="text"
               name="weightMax"
               value={input.weightMax}
               required
             />
-            {errors.weightMax && <p>{errors.weightMax}</p>}
+            {errors.weightMax && (
+              <p className={style.validation}>{errors.weightMax}</p>
+            )}
           </label>
         </div>
         <div>
-          <label>
-            Life Span -
+          <label className={style.text}>
+            Dog Life Span -
             <input
+              className={style.input}
               onChange={(e) => handleInputChange(e)}
               type="text"
               name="life_span"
               value={input.life_span}
               required
             />
-            {errors.life_span && <p>{errors.life_span}</p>}
+            {errors.life_span && (
+              <p className={style.validation}>{errors.life_span}</p>
+            )}
           </label>
         </div>
         <div>
-          <label>
-            Image -
+          <label className={style.text}>
+            Dog Image -
             <input
+              className={style.input}
               onChange={(e) => handleInputChange(e)}
               type="text"
               name="image"
               value={input.image}
               required
             />
-            {errors.image && <p>{errors.image}</p>}
+            {errors.image && <p className={style.validation}>{errors.image}</p>}
           </label>
         </div>
         <div>
-          <label>
-            Temperament -
+          <label className={style.text}>
+            Temperaments -
             <input
+              className={style.input}
               onChange={(e) => handleInputChange(e)}
               type="text"
               name="temperament"
@@ -180,18 +211,26 @@ export default function CreatedDog() {
               disabled
               required
             />
-            {errors.temperament && <p>{errors.temperament}</p>}
+            {errors.temperament && (
+              <p className={style.validation}>{errors.temperament}</p>
+            )}
           </label>
         </div>
-        <select onChange={(e) => handleSelect(e)}>
+
+        <select className={style.select} onChange={(e) => handleSelect(e)}>
           {temperament.map((el) => (
             <option value={el.name} key={el.id}>
               {el.name}
             </option>
           ))}
         </select>
-        <button type="submit">Create a dog</button>
+        <button className={style.button} type="submit">
+          Create a dog
+        </button>
       </form>
+      <Link to="/home">
+        <button className={style.button}>Go back</button>
+      </Link>
     </div>
   );
 }

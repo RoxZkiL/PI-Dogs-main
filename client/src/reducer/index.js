@@ -16,7 +16,7 @@ function rootReducer(state = initialState, action) {
     case "ORDER_BY_WEIGHT":
       let filteredDogs;
       if (action.payload === "weightMin") {
-        let weightMin = state.allDogs.sort((a, b) => {
+        let weightMin = state.dogs.sort((a, b) => {
           if (a.weightMin > b.weightMin) {
             return 1;
           }
@@ -28,7 +28,7 @@ function rootReducer(state = initialState, action) {
         filteredDogs = weightMin;
       }
       if (action.payload === "weightMax") {
-        let weightMax = state.allDogs.sort((a, b) => {
+        let weightMax = state.dogs.sort((a, b) => {
           if (a.weightMax > b.weightMax) {
             return -1;
           }
@@ -46,7 +46,7 @@ function rootReducer(state = initialState, action) {
     case "ORDER_BY_ATOZ":
       let orderedDogs;
       if (action.payload === "ascendente") {
-        let orderedAToZ = state.allDogs.sort((a, b) => {
+        let orderedAToZ = state.dogs.sort((a, b) => {
           if (a.name > b.name) {
             return 1;
           }
@@ -57,7 +57,7 @@ function rootReducer(state = initialState, action) {
         });
         orderedDogs = orderedAToZ;
       } else {
-        let orderedZToA = state.allDogs.sort((a, b) => {
+        let orderedZToA = state.dogs.sort((a, b) => {
           if (a.name > b.name) {
             return -1;
           }

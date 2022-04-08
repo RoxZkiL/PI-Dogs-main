@@ -10,7 +10,6 @@ import {
 } from "../actions";
 import Card from "./Card";
 import Paginated from "./Paginado";
-import { Link } from "react-router-dom";
 import style from "./Filters.module.css";
 import SearchBar from "./SearchBar";
 
@@ -70,7 +69,7 @@ export default function Filters() {
           onChange={(e) => handerSortAlphabetically(e)}
           value="disabled"
         >
-          <option value="">Order Alphabetically</option>
+          <option>Order Alphabetically</option>
           <option value="ascendente">A to Z</option>
           <option value="descendente">Z to A</option>
         </select>
@@ -80,7 +79,7 @@ export default function Filters() {
           onChange={(e) => handleSortWeight(e)}
           value="disabled"
         >
-          <option value="">Order by weight</option>
+          <option>Order by weight</option>
           <option value="weightMin">Min weight</option>
           <option value="weightMax">Max weight</option>
         </select>
@@ -92,7 +91,7 @@ export default function Filters() {
           }}
           value="disabled"
         >
-          <option value="">All temperaments</option>
+          <option>All temperaments</option>
           {allTemperaments?.map((el) => (
             <option value={el.name} key={el.id}>
               {el.name}
@@ -105,7 +104,7 @@ export default function Filters() {
           onChange={(e) => handleCreatedDb(e)}
           value="disabled"
         >
-          <option value="">Filtered dogs</option>
+          <option>Filtered dogs</option>
           <option value="apiDogs">Dogs from api</option>
           <option value="dbDogs">Dogs from database</option>
         </select>

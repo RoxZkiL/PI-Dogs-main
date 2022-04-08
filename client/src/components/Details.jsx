@@ -20,7 +20,7 @@ export default function Details() {
       <div className={style.classDiv}>
         <div className={style.detail}>
           <img className={style.img} src={details.image} alt="Not found" />
-          <h2>{details.name}</h2>
+          <h2 className={style.h2}>{details.name}</h2>
           <h5>Minimum weight: {details.weightMin} </h5>
           <h5>Maximum weight: {details.weightMax} </h5>
           <h5>Minimum height: {details.heightMin} </h5>
@@ -28,7 +28,7 @@ export default function Details() {
           <h5>Life span: {details.life_span} </h5>
           <h5>Temperaments: {details.temperament}</h5>
           <Link to="/home">
-            <button>Go back</button>
+            <button className={style.button}>Go back</button>
           </Link>
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function Details() {
       <div>
         Loading...
         <Link to="/home">
-          <button>Go back</button>
+          <button className={style.button}>Go back</button>
         </Link>
       </div>
     );

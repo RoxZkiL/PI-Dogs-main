@@ -24,9 +24,11 @@ export default function Card({
         <span className={style.h5}>Min weight : {weightMin} </span>
         <span className={style.h5}>Max weight : {weightMax} </span>
       </div>
-      <Link to={`/home/${id}`}>
-        <button className={style.button}>Dog info</button>
-      </Link>
+      <div>
+        <Link to={`/home/${id}`}>
+          <button className={style.button}>Dog info</button>
+        </Link>
+      </div>
     </div>
   );
 }
