@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getDogsByQuery } from "../actions";
+import style from "./SearchBar.module.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -21,14 +22,19 @@ export default function SearchBar() {
   //MANEJO ESTADO LOCAL LO QUE ESCRIBE EL USUARIO SE GUARDA EN MI ESTADO LOCAL NAME Y ESO ES LO QUE DESPACHO
 
   return (
-    <div>
+    <div className={style.divStyle}>
       <input
+        className={style.searchBar}
         value={name}
         type="text"
-        placeholder="Search Dogs"
+        placeholder="Search a dog..."
         onChange={(e) => handleInputChange(e)}
       />
-      <button type="submit" onClick={(e) => handleSubmit(e)}>
+      <button
+        className={style.button}
+        type="submit"
+        onClick={(e) => handleSubmit(e)}
+      >
         Search
       </button>
     </div>

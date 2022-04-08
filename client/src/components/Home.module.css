@@ -1,21 +1,19 @@
-.cardsConteiner {
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  display: grid;
-  position: relative;
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
-  background-color: rgb(71, 130, 130);
-}
-.home {
-  background-color: gray;
-  background-size: cover;
-  min-height: 100vh;
-  min-width: 100vh;
-  margin: 0;
-  padding: 0;
-}
-body {
-  height: 100%;
-  width: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+.main{
+    margin: 0;
+    background: url("file:///D:/Descargas%20Chrome/peakpx%20(1).jpg") center center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+  }
+
+  .h1 {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 100px;
+    color: antiquewhite;
+    text-shadow: 10px 10px 10px rgb(1, 136, 98);
+  }
+
+  

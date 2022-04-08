@@ -1,8 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+.mainDiv {
+  display: flex;
+  justify-content: center;
+}
+
 .paginado {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 40px;
     list-style-type: none;
-    background-color: rgba(70, 70, 70, 0.622);
+    color: white;
+    font-weight: 100;
+  }
+
+  .li {
+    border: 1px solid rgb(0, 128, 81);
+    padding: 0px 7px 0px 7px;
+    background-color: rgba(4, 4, 4, 0.752);
+    margin:  0px 7px 0px 7px;
+    width: 50px;
+    border-radius: 5px;
+    transition: .2s;
+    font-weight: bold;
+    font-family: 'Kaushan Script', cursive;
+  }
+
+  .li:hover{
+    background-color: rgba(108, 108, 108, 0.653);
+    cursor: pointer;
   }

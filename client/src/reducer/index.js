@@ -56,8 +56,7 @@ function rootReducer(state = initialState, action) {
           return 0;
         });
         orderedDogs = orderedAToZ;
-      }
-      if (action.payload === "descendente") {
+      } else {
         let orderedZToA = state.allDogs.sort((a, b) => {
           if (a.name > b.name) {
             return -1;

@@ -41,7 +41,7 @@ export default function CreatedDog() {
       !isNaN(input.weightMin) &&
       !isNaN(input.weightMax) &&
       input.life_span.includes("years") &&
-      input.image.includes("https://") &&
+      input.image.includes("http") &&
       input.temperament.length !== 0
     ) {
       dispatch(getCreatedDogs(input));
@@ -190,9 +190,6 @@ export default function CreatedDog() {
             </option>
           ))}
         </select>
-        {/* <ul>
-          <li>{input.temperament.map((el) => el + ", ")}</li>
-        </ul> */}
         <button type="submit">Create a dog</button>
       </form>
     </div>
@@ -237,8 +234,8 @@ function validate(input) {
 
   if (!input.image) {
     errors.image = "Image url is required";
-  } else if (!input.image.includes("years")) {
-    errors.image = "The image should have a valir url (format https://)";
+  } else if (!input.image.includes("http")) {
+    errors.image = "The image should have a valid url";
   }
 
   if (!input.temperament) {

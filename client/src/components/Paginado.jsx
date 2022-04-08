@@ -9,14 +9,16 @@ export default function Paginated({ dogsPerPage, allDogs, paginated }) {
   }
 
   return (
-    <nav>
-      <ul className={style.paginado}>
-        {pageNumber?.map((number) => (
-          <li className="el" key={number}>
-            <a onClick={() => paginated(number)}> {-number}- </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className={style.mainDiv}>
+      <nav>
+        <ul className={style.paginado}>
+          {pageNumber?.map((number) => (
+            <li className={style.li} key={number}>
+              <a onClick={() => paginated(number)}>{number}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 }

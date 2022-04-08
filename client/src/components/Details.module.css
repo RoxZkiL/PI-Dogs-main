@@ -1,0 +1,19 @@
+.detail{
+    border: 1px solid black;
+    width: 500px;
+    height: 700px;
+    padding-top: 40px;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+}
+
+.classDiv {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
