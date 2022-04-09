@@ -10,8 +10,8 @@ const getApiInfo = async function () {
     return {
       id: `${el.id}`,
       name: el.name,
-      heightMin: parseInt(heightAPI[0]) ? parseInt(heightAPI[0]) : "",
-      heightMax: parseInt(heightAPI[1]) ? parseInt(heightAPI[1]) : "",
+      heightMin: parseInt(heightAPI[0]) ? parseInt(heightAPI[0]) : 27,
+      heightMax: parseInt(heightAPI[1]) ? parseInt(heightAPI[1]) : 41,
       weightMin: parseInt(weightAPI[0]) ? parseInt(weightAPI[0]) : 25,
       weightMax: parseInt(weightAPI[1]) ? parseInt(weightAPI[1]) : 36,
       life_span: el.life_span,

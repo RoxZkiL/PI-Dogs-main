@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Paginado.module.css";
 
 export default function Paginated({ dogsPerPage, allDogs, paginated }) {
-  const pageNumber = [];
+  let pageNumber = [];
 
   for (let i = 0; i < Math.ceil(allDogs / dogsPerPage); i++) {
     pageNumber.push(i + 1);

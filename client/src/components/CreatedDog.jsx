@@ -8,7 +8,8 @@ export default function CreatedDog() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const temperament = useSelector((state) => state.temperaments);
-  const [input, setInput] = useState({
+  const [errors, setErrors] = useState({});
+  var [input, setInput] = useState({
     name: "",
     heightMin: "",
     heightMax: "",
@@ -18,7 +19,6 @@ export default function CreatedDog() {
     image: "",
     temperament: [],
   });
-  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     dispatch(getTemperaments());
@@ -33,34 +33,15 @@ export default function CreatedDog() {
   }
 
   function handleSubmit(e) {
+    console.log(input.temperament.length);
     e.preventDefault();
-    if (
-      input.name &&
-      input.heightMin &&
-      !isNaN(input.heightMin) &&
-      !isNaN(input.heightMax) &&
-      !isNaN(input.weightMin) &&
-      !isNaN(input.weightMax) &&
-      input.life_span.includes("years") &&
-      input.image.includes("http") &&
-      input.temperament.length !== 0
-    ) {
+    if (Object.values(errors).length === 0 && input.temperament.length !== 0) {
       dispatch(getCreatedDogs(input));
       alert("¡Dog successfully created!");
-      setInput({
-        name: "",
-        heightMin: "",
-        heightMax: "",
-        weightMin: "",
-        weightMax: "",
-        life_span: "",
-        image: "",
-        temperament: [],
-      });
       navigate("/home");
     } else {
       alert(
-        "All information about the new dog must be completed and must be valid"
+        "All information about the new dog must be completed and valid, also you have to select a temperament"
       );
     }
   }
@@ -83,7 +64,7 @@ export default function CreatedDog() {
         temperament: temps,
       });
     } else {
-      alert("You can select only 4 temperaments");
+      alert("You can only select 4 temperaments");
     }
   }
 
@@ -105,6 +86,7 @@ export default function CreatedDog() {
             {errors.name && <p className={style.validation}>{errors.name}</p>}
           </label>
         </div>
+
         <div>
           <label className={style.text}>
             Minimun Height -
@@ -121,6 +103,7 @@ export default function CreatedDog() {
             )}
           </label>
         </div>
+
         <div>
           <label className={style.text}>
             Maximun Height -
@@ -137,6 +120,7 @@ export default function CreatedDog() {
             )}
           </label>
         </div>
+
         <div>
           <label className={style.text}>
             Minimun Weight -
@@ -153,6 +137,7 @@ export default function CreatedDog() {
             )}
           </label>
         </div>
+
         <div>
           <label className={style.text}>
             Maximun Weight -
@@ -169,6 +154,7 @@ export default function CreatedDog() {
             )}
           </label>
         </div>
+
         <div>
           <label className={style.text}>
             Dog Life Span -
@@ -185,6 +171,7 @@ export default function CreatedDog() {
             )}
           </label>
         </div>
+
         <div>
           <label className={style.text}>
             Dog Image -
@@ -199,6 +186,7 @@ export default function CreatedDog() {
             {errors.image && <p className={style.validation}>{errors.image}</p>}
           </label>
         </div>
+
         <div>
           <label className={style.text}>
             Temperaments -
@@ -209,7 +197,6 @@ export default function CreatedDog() {
               name="temperament"
               value={input.temperament}
               disabled
-              required
             />
             {errors.temperament && (
               <p className={style.validation}>{errors.temperament}</p>
@@ -224,6 +211,7 @@ export default function CreatedDog() {
             </option>
           ))}
         </select>
+
         <button className={style.button} type="submit">
           Create a dog
         </button>
@@ -237,8 +225,11 @@ export default function CreatedDog() {
 
 function validate(input) {
   let errors = {};
+
   if (!input.name) {
     errors.name = "Name is required";
+  } else if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/.test(input.name)) {
+    errors.name = "Name can only contain leters";
   }
 
   if (!input.heightMin) {
@@ -277,8 +268,9 @@ function validate(input) {
     errors.image = "The image should have a valid url";
   }
 
-  if (!input.temperament) {
+  if (!input.temperament === 0) {
     errors.temperament = "Temperemnts are required";
   }
+
   return errors;
 }

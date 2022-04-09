@@ -112,11 +112,13 @@ export default function Filters() {
 
       <SearchBar />
 
-      <Paginated
-        dogsPerPage={dogsPerPage}
-        allDogs={allDogs.length}
-        paginated={paginated}
-      />
+      {allDogs.length > 7 ? (
+        <Paginated
+          dogsPerPage={dogsPerPage}
+          allDogs={allDogs.length}
+          paginated={paginated}
+        />
+      ) : null}
 
       <div className={style.cardsConteiner}>
         {currentDogs?.map((el) => {
