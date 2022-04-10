@@ -67,19 +67,14 @@ export default function Filters() {
         <select
           className={style.select}
           onChange={(e) => handerSortAlphabetically(e)}
-          value="disabled"
         >
-          <option>Order Alphabetically</option>
+          <option hidden>Order Alphabetically</option>
           <option value="ascendente">A to Z</option>
           <option value="descendente">Z to A</option>
         </select>
 
-        <select
-          className={style.select}
-          onChange={(e) => handleSortWeight(e)}
-          value="disabled"
-        >
-          <option>Order by weight</option>
+        <select className={style.select} onChange={(e) => handleSortWeight(e)}>
+          <option hidden>Order by weight</option>
           <option value="weightMin">Min weight</option>
           <option value="weightMax">Max weight</option>
         </select>
@@ -89,9 +84,8 @@ export default function Filters() {
           onChange={(e) => {
             handleTemperament(e);
           }}
-          value="disabled"
         >
-          <option>All temperaments</option>
+          <option hidden>All temperaments</option>
           {allTemperaments?.map((el) => (
             <option value={el.name} key={el.id}>
               {el.name}
@@ -99,12 +93,8 @@ export default function Filters() {
           ))}
         </select>
 
-        <select
-          className={style.select}
-          onChange={(e) => handleCreatedDb(e)}
-          value="disabled"
-        >
-          <option>Filtered dogs</option>
+        <select className={style.select} onChange={(e) => handleCreatedDb(e)}>
+          <option hidden>Filtered dogs</option>
           <option value="apiDogs">Dogs from api</option>
           <option value="dbDogs">Dogs from database</option>
         </select>
@@ -125,7 +115,6 @@ export default function Filters() {
           return (
             <div key={el.id}>
               <Card
-                key={el.id}
                 id={el.id}
                 name={el.name}
                 image={el.image}

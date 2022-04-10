@@ -33,7 +33,6 @@ export default function CreatedDog() {
   }
 
   function handleSubmit(e) {
-    console.log(input.temperament.length);
     e.preventDefault();
     if (Object.values(errors).length === 0 && input.temperament.length !== 0) {
       dispatch(getCreatedDogs(input));
@@ -66,6 +65,13 @@ export default function CreatedDog() {
     } else {
       alert("You can only select 4 temperaments");
     }
+  }
+
+  function handleDeleteTemperaments(e) {
+    setInput({
+      ...input,
+      temperament: input.temperament.filter((el) => el !== e),
+    });
   }
 
   return (
@@ -187,7 +193,7 @@ export default function CreatedDog() {
           </label>
         </div>
 
-        <div>
+        {/* <div>
           <label className={style.text}>
             Temperaments -
             <input
@@ -195,16 +201,17 @@ export default function CreatedDog() {
               onChange={(e) => handleInputChange(e)}
               type="text"
               name="temperament"
-              value={input.temperament}
+              value={input.temperament.join(", ")}
               disabled
             />
             {errors.temperament && (
               <p className={style.validation}>{errors.temperament}</p>
             )}
           </label>
-        </div>
+        </div> */}
 
         <select className={style.select} onChange={(e) => handleSelect(e)}>
+          <option hidden>Temperaments</option>
           {temperament.map((el) => (
             <option value={el.name} key={el.id}>
               {el.name}
@@ -216,9 +223,27 @@ export default function CreatedDog() {
           Create a dog
         </button>
       </form>
-      <Link to="/home">
-        <button className={style.button}>Go back</button>
-      </Link>
+
+      {input.temperament.map((el) => (
+        <div className={style.genBtn} key={el}>
+          <button
+            className={style.butnn}
+            onClick={() => handleDeleteTemperaments(el)}
+          >
+            {el}
+          </button>
+        </div>
+      ))}
+
+      {errors.temperament && (
+        <p className={style.validation}>{errors.temperament}</p>
+      )}
+
+      <div>
+        <Link to="/home">
+          <button className={style.button}>Go back</button>
+        </Link>
+      </div>
     </div>
   );
 }
@@ -268,7 +293,7 @@ function validate(input) {
     errors.image = "The image should have a valid url";
   }
 
-  if (!input.temperament === 0) {
+  if (!input.temperament) {
     errors.temperament = "Temperemnts are required";
   }
 
