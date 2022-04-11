@@ -117,7 +117,11 @@ export default function Filters() {
               <Card
                 id={el.id}
                 name={el.name}
-                image={el.image}
+                image={
+                  el.image
+                    ? el.image
+                    : "https://i.ytimg.com/vi/0oBx7Jg4m-o/maxresdefault.jpg"
+                }
                 heightMin={el.heightMin}
                 heightMax={el.heightMax}
                 weightMin={el.weightMin}

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDetails } from "../actions";
+import { getDetails, cleaner } from "../actions";
 import { useParams } from "react-router";
 import style from "./Details.module.css";
 
@@ -11,6 +11,7 @@ export default function Details() {
   const { id } = useParams();
 
   useEffect(() => {
+    dispatch(cleaner());
     dispatch(getDetails(id));
   }, [dispatch, id]);
 

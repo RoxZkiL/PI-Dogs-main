@@ -187,9 +187,9 @@ export default function CreatedDog() {
               type="text"
               name="image"
               value={input.image}
-              required
+              // required
             />
-            {errors.image && <p className={style.validation}>{errors.image}</p>}
+            {/* {errors.image && <p className={style.validation}>{errors.image}</p>} */}
           </label>
         </div>
 
@@ -235,9 +235,9 @@ export default function CreatedDog() {
         </div>
       ))}
 
-      {errors.temperament && (
+      {/* {errors.temperament && (
         <p className={style.validation}>{errors.temperament}</p>
-      )}
+      )} */}
 
       <div>
         <Link to="/home">
@@ -287,11 +287,11 @@ function validate(input) {
     errors.life_span = "The age of the dog must include the word (years)";
   }
 
-  if (!input.image) {
-    errors.image = "Image url is required";
-  } else if (!input.image.includes("http")) {
-    errors.image = "The image should have a valid url";
-  }
+  // if (!input.image) {
+  //   errors.image = "Image url is required";
+  // } else if (!input.image.includes("http")) {
+  //   errors.image = "The image should have a valid url";
+  // }
 
   if (!input.temperament) {
     errors.temperament = "Temperemnts are required";

@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .cardsConteiner {
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  /* grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr); */
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto;
   display: grid;
   justify-items: center;
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
-}
+  /* grid-column-gap: 80px; */
+  grid-row-gap: 40px;
+  justify-content: center;
+  align-content: center;
+  }
 
 .containers{
   padding-top: 40px;
