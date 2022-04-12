@@ -86,6 +86,29 @@ export function getDetails(payload) {
   };
 }
 
+export function deleteDog(id) {
+  return async function (dispatch) {
+    try {
+      const deleteDog = await axios.delete(
+        `http://localhost:3001/doggos/${id}`
+      );
+      return dispatch({
+        type: "DELETED_DOG",
+        payload: deleteDog,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function cleanDog() {
+  return {
+    type: "CLEAN_DOG",
+    payload: {},
+  };
+}
+
 export function cleaner() {
   return {
     type: "CLEANER",

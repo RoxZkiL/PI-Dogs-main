@@ -15,7 +15,9 @@ const getApiInfo = async function () {
       weightMin: parseInt(weightAPI[0]) ? parseInt(weightAPI[0]) : 25,
       weightMax: parseInt(weightAPI[1]) ? parseInt(weightAPI[1]) : 36,
       life_span: el.life_span,
-      image: el.image.url,
+      image: el.image.url
+        ? el.image.url
+        : "https://i.ytimg.com/vi/0oBx7Jg4m-o/maxresdefault.jpg",
       temperament: el.temperament,
     };
   });
@@ -48,7 +50,9 @@ const getAllInfo = async function () {
       weightMin: el.weightMin,
       weightMax: el.weightMax,
       life_span: el.life_span,
-      image: el.image,
+      image: el.image
+        ? el.image
+        : "https://i.ytimg.com/vi/0oBx7Jg4m-o/maxresdefault.jpg",
       temperament: el.temperaments
         .map((el) => {
           return el.name;

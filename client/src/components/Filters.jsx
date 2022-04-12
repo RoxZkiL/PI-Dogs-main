@@ -11,7 +11,7 @@ import {
 import Card from "./Card";
 import Paginated from "./Paginado";
 import style from "./Filters.module.css";
-import SearchBar from "./SearchBar";
+import Loader from "./Loader";
 
 export default function Filters() {
   const dispatch = useDispatch();
@@ -23,6 +23,8 @@ export default function Filters() {
   const currentDogs = allDogs.slice(FirstDogIndex, LastDogIndex);
   const [order, setOrder] = useState("");
   const allTemperaments = useSelector((state) => state.temperaments);
+
+  const loader = useSelector((state) => state.loader);
 
   const paginated = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -100,8 +102,6 @@ export default function Filters() {
         </select>
       </div>
 
-      <SearchBar />
-
       {allDogs.length > 7 ? (
         <Paginated
           dogsPerPage={dogsPerPage}
@@ -111,29 +111,30 @@ export default function Filters() {
       ) : null}
 
       <div className={style.cardsConteiner}>
-        {currentDogs?.map((el) => {
-          return (
-            <div key={el.id}>
-              <Card
-                id={el.id}
-                name={el.name}
-                image={
-                  el.image
-                    ? el.image
-                    : "https://i.ytimg.com/vi/0oBx7Jg4m-o/maxresdefault.jpg"
-                }
-                heightMin={el.heightMin}
-                heightMax={el.heightMax}
-                weightMin={el.weightMin}
-                weightMax={el.weightMax}
-                temperament={el.temperament}
-              />
-              {/* <Link to={`/home/${el.id}`}>
-                <button>Dog info</button>
-              </Link> */}
-            </div>
-          );
-        })}
+        {loader ? (
+          <Loader />
+        ) : (
+          currentDogs?.map((el) => {
+            return (
+              <div key={el.id}>
+                <Card
+                  id={el.id}
+                  name={el.name}
+                  image={
+                    el.image
+                      ? el.image
+                      : "https://i.ytimg.com/vi/0oBx7Jg4m-o/maxresdefault.jpg"
+                  }
+                  heightMin={el.heightMin}
+                  heightMax={el.heightMax}
+                  weightMin={el.weightMin}
+                  weightMax={el.weightMax}
+                  temperament={el.temperament}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

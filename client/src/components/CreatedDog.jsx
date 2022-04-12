@@ -261,24 +261,36 @@ function validate(input) {
     errors.heightMin = "Minimun height is required";
   } else if (!/^([0-9])*$/.test(input.heightMin)) {
     errors.heightMin = "Minimun height should be a number";
+  } else if (input.heightMin < 1 || input.heightMin > 50) {
+    errors.heightMin =
+      "Minimun height should be less than 50 cm and more than 0 cm";
   }
 
   if (!input.heightMax) {
     errors.heightMax = "Maximun height is required";
   } else if (!/^([0-9])*$/.test(input.heightMax)) {
     errors.heightMax = "Maximun height should be a number";
+  } else if (input.heightMax <= input.heightMin || input.heightMax > 100) {
+    errors.heightMax =
+      "Maximun height should be greater than minimun height and less than 100 cm";
   }
 
   if (!input.weightMin) {
     errors.weightMin = "Minimun weight is required";
   } else if (!/^([0-9])*$/.test(input.weightMin)) {
     errors.weightMin = "Minimun weight should be a number";
+  } else if (input.weightMin < 1 || input.weightMin > 50) {
+    errors.weightMin =
+      "Minimun weight should be less than 50 kg cm and more than 0 kg";
   }
 
   if (!input.weightMax) {
     errors.weightMax = "Maximun weight is required";
   } else if (!/^([0-9])*$/.test(input.weightMax)) {
     errors.weightMax = "Maximun weight should be a number";
+  } else if (input.weightMax <= input.weightMin || input.weightMax > 100) {
+    errors.weightMax =
+      "Minimun weight should be less than 50 kg cm and more than 0 kg";
   }
 
   if (!input.life_span) {

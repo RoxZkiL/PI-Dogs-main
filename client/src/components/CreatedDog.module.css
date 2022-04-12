@@ -14,7 +14,7 @@
 }
 
 .validation {
-    font-size: 15px;
+    font-size: 20px;
     color: red;
     font-weight: initial;
     padding: 0%;
@@ -22,7 +22,7 @@
 
 .input {
     margin-top: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     width: 400px;
     height: 22px;
     font-weight: bolder;
