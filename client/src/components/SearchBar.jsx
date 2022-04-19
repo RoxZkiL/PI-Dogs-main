@@ -19,8 +19,6 @@ export default function SearchBar() {
     setName("");
   }
 
-  //MANEJO ESTADO LOCAL LO QUE ESCRIBE EL USUARIO SE GUARDA EN MI ESTADO LOCAL NAME Y ESO ES LO QUE DESPACHO
-
   return (
     <div className={style.divStyle}>
       <input

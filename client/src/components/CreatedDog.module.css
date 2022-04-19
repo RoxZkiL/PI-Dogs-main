@@ -1,138 +1,190 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
 
-.text {
-    color: antiquewhite;
-    font-size: 20px;
-    font-family: 'Josefin Sans', sans-serif;
+.mainDiv{
+  min-height: 100vh;
+  min-width: 100vh;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.46);
+}
+
+.dogCreate{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 800px;
+  max-width: 1250px;
+  margin-top: 50px;
+  background-color: rgba(0, 0, 0, 0.755);
+  border-radius: 70px;
+  box-shadow: 0 0 10px 1px rgb(1, 145, 35);   
+}
+
+.created{
+  margin: 6% 12% 0% 18%;
+}
+
+.form{
+  color: whitesmoke;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.inputDiv{
+  display: flex;
+  margin: 20px;
+  align-items: center;
+  text-shadow: 3px 3px 3px rgb(0, 118, 0);
+  text-justify:newspaper;
+}
+
+.input{
+  width: 460px;
+  height: 30px;
+  border-radius: 8px;
+  border: 3px solid rgb(1, 136, 68);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.label{
+  font-size: 20px;
+  margin-top: 12px;
+  width: 200px;
+  height: 40px;
 }
 
 .h1 {
-    color:aliceblue;
-    font-size: 40px;
-    font-family: 'Audiowide', cursive;
+  color:aliceblue;
+  font-size: 22px;
+  font-family: 'Audiowide', cursive;
+  padding-top: 10px;
+  text-shadow: 8px 8px 8px rgb(0, 107, 0);
 }
 
-.validation {
-    font-size: 20px;
-    color: red;
-    font-weight: initial;
-    padding: 0%;
-}
-
-.input {
-    margin-top: 12px;
-    margin-bottom: 6px;
-    width: 400px;
-    height: 22px;
-    font-weight: bolder;
-    color: rgb(0, 157, 84);
-    font-size: 18px;
-    border-radius: 7px;
-    border: 3px solid rgb(1, 136, 68);
+.divSelect{
+  display: flex;
+  justify-content:center;
+  padding-top: 2%;
+  margin-right: 4%;
 }
 
 .select {
-    width: 200px;
-    height: 48px;
-    font-family: 'Fredoka One', cursive;
-    font-size: 18px;
-    text-align: center;
-    font-weight: bolder;
-    border-radius: 7px;
-    border: 3px solid rgb(1, 136, 68);
+  padding: 0.5em 2.7em;
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bolder;
+  border-radius: 8px;
+  border: 3px solid rgb(1, 136, 68);
 }
 
-.button {
-    --green: #1BFD9C;
-    font-size: 15px;
-    padding: 0.8em 2.7em;
-    letter-spacing: 0.06em;
-    position: relative;
-    margin-top: 20px;
-    font-family: inherit;
-    font-weight: bold;
-    border-radius: 0.6em;
-    overflow: hidden;
-    transition: all 0.3s;
-    line-height: 1.4em;
-    border: 2px solid var(--green);
-    background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 253, 156, 0.1) 100%);
-    color: var(--green);
-    box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
-    cursor: pointer;
-   }
-   
-   .button:hover {
-    color: #82ffc9;
-    box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6), 0 0 9px 3px rgba(27, 253, 156, 0.2);
-   }
-   
-   .button:before {
-    content: "";
-    position: absolute;
-    left: -4em;
-    width: 4em;
-    height: 100%;
-    top: 0;
-    transition: transform .4s ease-in-out;
-    background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%,rgba(27, 253, 156, 0.1) 60% , transparent 100%);
-   }
-   
-   .button:hover:before {
-    transform: translateX(15em);
-   }
+.buttonCreate {
+  --green: #1BFD9C;
+  font-size: 16px;
+  margin-left: 16px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  font-family: inherit;
+  font-weight: bold;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  border: 2px solid var(--green);
+  background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 253, 156, 0.1) 100%);
+  color: var(--green);
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
+  cursor: pointer;
+ }
+ 
+ .button:hover {
+  color: #82ffc9;
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6), 0 0 9px 3px rgba(27, 253, 156, 0.2);
+ }
+ 
+ .button:before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform .4s ease-in-out;
+  background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%,rgba(27, 253, 156, 0.1) 60% , transparent 100%);
+ }
+ 
+ .button:hover:before {
+  transform: translateX(15em);
+ }
 
-   .genBtn {
-    display: inline-block;
-    padding: 30px;
-    margin-top: 20px;
-    margin-bottom: 4px;
-   }
+ .divButnn {
+  display: inline-block;
+  margin-right: 40px;
+  margin-top: 4%;
+ }
 
-   .butnn {
-     appearance: none;
-     backface-visibility: hidden;
-     background-color: #27ae60;
-     border-radius: 8px;
-     border-style: none;
-     box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
-     box-sizing: border-box;
-     color: #fff;
-     cursor: pointer;
-     display: inline-block;
-     font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
-     font-size: 16px;
-     font-weight: 600;
-     letter-spacing: normal;
-     line-height: 1.5;
-     outline: none;
-     overflow: hidden;
-     padding: 13px 20px;
-     position: relative;
-     text-align: center;
-     text-decoration: none;
-     transform: translate3d(0, 0, 0);
-     transition: all .3s;
-     user-select: none;
-     -webkit-user-select: none;
-     touch-action: manipulation;
-     vertical-align: top;
-     white-space: nowrap;
-   }
-   
-   .butnn:hover {
-     background-color: #1e8449;
-     opacity: 1;
-     transform: translateY(0);
-     transition-duration: .35s;
-   }
-   
-   .butnn:active {
-     transform: translateY(2px);
-     transition-duration: .35s;
-   }
-   
-   .butnn:hover {
-     box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
-   }
+ .butnn {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #27ae60;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 13px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.butnn:hover {
+  background-color: #1e8449;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.butnn:active {
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.butnn:hover {
+  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
+
+.validation{
+  display:flex ;
+
+  text-align:start;
+
+  width: 210px;
+  height: 50px;
+  margin-left: 2%;
+  text-shadow: 4px 4px 4px rgb(190, 0, 0);
+}
+
+.homeButtonDiv{
+  margin-top: 6%;
+  margin-right: 4%;
+}

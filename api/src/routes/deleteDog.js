@@ -9,8 +9,8 @@ router.delete("/:id", async function (req, res) {
       await Dog.destroy({
         where: { id: id },
       });
+      res.send({ msg: "Dog deleted" });
     }
-    res.send({ msg: "Dog deleted" });
   } catch (error) {
     console.log(error);
   }

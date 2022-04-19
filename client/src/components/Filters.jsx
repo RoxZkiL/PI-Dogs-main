@@ -63,8 +63,16 @@ export default function Filters() {
     setCurrentPage(1);
   }
 
+  // function handleOrder(e) {
+  //   e.preventDefault();
+  //   dispatch(orderWeight());
+  //   setOrder(e.target.value);
+  //   setCurrentPage(1);
+  // }
+
   return (
     <div>
+      {/* <button onClick={(e) => handleOrder(e)}>order button</button> */}
       <div className={style.containers}>
         <select
           className={style.select}
@@ -102,11 +110,12 @@ export default function Filters() {
         </select>
       </div>
 
-      {allDogs.length > 7 ? (
+      {allDogs.length > 8 ? (
         <Paginated
           dogsPerPage={dogsPerPage}
           allDogs={allDogs.length}
           paginated={paginated}
+          currentPage={currentPage}
         />
       ) : null}
 

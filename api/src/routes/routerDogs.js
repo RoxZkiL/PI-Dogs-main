@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
       if (dogBreed.length !== 0) {
         res.status(200).send(dogBreed);
       } else {
-        res.status(400).send("That Breed doesn't exist");
+        res.status(404).send("That Breed doesn't exist");
       }
     } else {
       res.status(200).send(info);

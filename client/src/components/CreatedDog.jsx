@@ -9,7 +9,7 @@ export default function CreatedDog() {
   const navigate = useNavigate();
   const temperament = useSelector((state) => state.temperaments);
   const [errors, setErrors] = useState({});
-  var [input, setInput] = useState({
+  let [input, setInput] = useState({
     name: "",
     heightMin: "",
     heightMax: "",
@@ -20,16 +20,17 @@ export default function CreatedDog() {
     temperament: [],
   });
 
-  useEffect(() => {
-    dispatch(getTemperaments());
-  }, [dispatch]);
-
   function handleInputChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
-    setErrors(validate({ ...input, [e.target.name]: e.target.value }));
+    setErrors(
+      validate({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
   }
 
   function handleSubmit(e) {
@@ -74,175 +75,142 @@ export default function CreatedDog() {
     });
   }
 
+  useEffect(() => {
+    dispatch(getTemperaments());
+  }, [dispatch]);
+
   return (
-    <div>
-      <h1 className={style.h1}>CREATE YOUR OWN DOG</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label className={style.text}>
-            Dog Name -
-            <input
-              className={style.input}
-              onChange={(e) => handleInputChange(e)}
-              type="text"
-              name="name"
-              value={input.name}
-              required
-            />
-            {errors.name && <p className={style.validation}>{errors.name}</p>}
-          </label>
-        </div>
+    <div className={style.mainDiv}>
+      <div className={style.h1}>
+        <h1>CREATE YOUR OWN DOG</h1>
+      </div>
 
-        <div>
-          <label className={style.text}>
-            Minimun Height -
-            <input
-              className={style.input}
-              onChange={(e) => handleInputChange(e)}
-              type="text"
-              name="heightMin"
-              value={input.heightMin}
-              required
-            />
-            {errors.heightMin && (
-              <p className={style.validation}>{errors.heightMin}</p>
-            )}
-          </label>
-        </div>
+      <div className={style.dogCreate}>
+        <div className={style.created}>
+          <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
+            <div className={style.inputDiv}>
+              <label className={style.label}>Dog's Name -</label>
+              <input
+                className={style.input}
+                onChange={(e) => handleInputChange(e)}
+                type="text"
+                name="name"
+                value={input.name}
+                required
+              />
+              <span className={style.validation}>
+                {errors.name && <p>{errors.name}</p>}
+              </span>
+            </div>
 
-        <div>
-          <label className={style.text}>
-            Maximun Height -
-            <input
-              className={style.input}
-              onChange={(e) => handleInputChange(e)}
-              type="text"
-              name="heightMax"
-              value={input.heightMax}
-              required
-            />
-            {errors.heightMax && (
-              <p className={style.validation}>{errors.heightMax}</p>
-            )}
-          </label>
-        </div>
+            <div className={style.inputDiv}>
+              <label className={style.label}>Min. Height -</label>
+              <input
+                className={style.input}
+                onChange={(e) => handleInputChange(e)}
+                type="text"
+                name="heightMin"
+                value={input.heightMin}
+                required
+              />
+              <span className={style.validation}>
+                {errors.heightMin && <p>{errors.heightMin}</p>}
+              </span>
+            </div>
 
-        <div>
-          <label className={style.text}>
-            Minimun Weight -
-            <input
-              className={style.input}
-              onChange={(e) => handleInputChange(e)}
-              type="text"
-              name="weightMin"
-              value={input.weightMin}
-              required
-            />
-            {errors.weightMin && (
-              <p className={style.validation}>{errors.weightMin}</p>
-            )}
-          </label>
-        </div>
+            <div className={style.inputDiv}>
+              <label className={style.label}>Max. Height -</label>
+              <input
+                className={style.input}
+                onChange={(e) => handleInputChange(e)}
+                type="text"
+                name="heightMax"
+                value={input.heightMax}
+                required
+              />
+              <span className={style.validation}>
+                {errors.heightMax && <p>{errors.heightMax}</p>}
+              </span>
+            </div>
 
-        <div>
-          <label className={style.text}>
-            Maximun Weight -
-            <input
-              className={style.input}
-              onChange={(e) => handleInputChange(e)}
-              type="text"
-              name="weightMax"
-              value={input.weightMax}
-              required
-            />
-            {errors.weightMax && (
-              <p className={style.validation}>{errors.weightMax}</p>
-            )}
-          </label>
-        </div>
+            <div className={style.inputDiv}>
+              <label className={style.label}>Min. Weight -</label>
+              <input
+                className={style.input}
+                onChange={(e) => handleInputChange(e)}
+                type="text"
+                name="weightMin"
+                value={input.weightMin}
+                required
+              />
+              <span className={style.validation}>
+                {errors.weightMin && <p>{errors.weightMin}</p>}
+              </span>
+            </div>
 
-        <div>
-          <label className={style.text}>
-            Dog Life Span -
-            <input
-              className={style.input}
-              onChange={(e) => handleInputChange(e)}
-              type="text"
-              name="life_span"
-              value={input.life_span}
-              required
-            />
-            {errors.life_span && (
-              <p className={style.validation}>{errors.life_span}</p>
-            )}
-          </label>
-        </div>
+            <div className={style.inputDiv}>
+              <label className={style.label}>Max. Weight -</label>
+              <input
+                className={style.input}
+                onChange={(e) => handleInputChange(e)}
+                type="text"
+                name="weightMax"
+                value={input.weightMax}
+                required
+              />
+              <span className={style.validation}>
+                {errors.weightMax && <p>{errors.weightMax}</p>}
+              </span>
+            </div>
 
-        <div>
-          <label className={style.text}>
-            Dog Image -
-            <input
-              className={style.input}
-              onChange={(e) => handleInputChange(e)}
-              type="text"
-              name="image"
-              value={input.image}
-              // required
-            />
-            {/* {errors.image && <p className={style.validation}>{errors.image}</p>} */}
-          </label>
-        </div>
+            <div className={style.inputDiv}>
+              <label className={style.label}> Life Span -</label>
+              <input
+                className={style.input}
+                onChange={(e) => handleInputChange(e)}
+                type="text"
+                name="life_span"
+                value={input.life_span}
+                required
+              />
+              <span className={style.validation}>
+                {errors.life_span && <p>{errors.life_span}</p>}
+              </span>
+            </div>
 
-        {/* <div>
-          <label className={style.text}>
-            Temperaments -
-            <input
-              className={style.input}
-              onChange={(e) => handleInputChange(e)}
-              type="text"
-              name="temperament"
-              value={input.temperament.join(", ")}
-              disabled
-            />
-            {errors.temperament && (
-              <p className={style.validation}>{errors.temperament}</p>
-            )}
-          </label>
-        </div> */}
-
-        <select className={style.select} onChange={(e) => handleSelect(e)}>
-          <option hidden>Temperaments</option>
-          {temperament.map((el) => (
-            <option value={el.name} key={el.id}>
-              {el.name}
-            </option>
+            <div className={style.divSelect}>
+              <select
+                className={style.select}
+                onChange={(e) => handleSelect(e)}
+              >
+                <option hidden>Temperaments</option>
+                {temperament.map((el) => (
+                  <option value={el.name} key={el.id}>
+                    {el.name}
+                  </option>
+                ))}
+              </select>
+              <button className={style.buttonCreate} type="submit">
+                CREATE A DOG
+              </button>
+            </div>
+          </form>
+          {input.temperament.map((el) => (
+            <div className={style.divButnn} key={el}>
+              <button
+                className={style.butnn}
+                onClick={() => handleDeleteTemperaments(el)}
+              >
+                {el}
+              </button>
+            </div>
           ))}
-        </select>
-
-        <button className={style.button} type="submit">
-          Create a dog
-        </button>
-      </form>
-
-      {input.temperament.map((el) => (
-        <div className={style.genBtn} key={el}>
-          <button
-            className={style.butnn}
-            onClick={() => handleDeleteTemperaments(el)}
-          >
-            {el}
-          </button>
+          <div className={style.homeButtonDiv}>
+            <Link to="/home">
+              <button className={style.buttonCreate}>HOME</button>
+            </Link>
+          </div>
         </div>
-      ))}
-
-      {/* {errors.temperament && (
-        <p className={style.validation}>{errors.temperament}</p>
-      )} */}
-
-      <div>
-        <Link to="/home">
-          <button className={style.button}>Go back</button>
-        </Link>
       </div>
     </div>
   );
@@ -262,17 +230,17 @@ function validate(input) {
   } else if (!/^([0-9])*$/.test(input.heightMin)) {
     errors.heightMin = "Minimun height should be a number";
   } else if (input.heightMin < 1 || input.heightMin > 50) {
-    errors.heightMin =
-      "Minimun height should be less than 50 cm and more than 0 cm";
+    errors.heightMin = "Minimun height should be between 0 and 50 Cms";
   }
 
   if (!input.heightMax) {
     errors.heightMax = "Maximun height is required";
   } else if (!/^([0-9])*$/.test(input.heightMax)) {
     errors.heightMax = "Maximun height should be a number";
-  } else if (input.heightMax <= input.heightMin || input.heightMax > 100) {
-    errors.heightMax =
-      "Maximun height should be greater than minimun height and less than 100 cm";
+  } else if (input.heightMax > 100) {
+    errors.heightMax = "Maximum height can't be more than 100 Cms";
+  } else if (input.heightMax === input.heightMin) {
+    errors.heightMax = "Maximun height can't be equal than minimun height";
   }
 
   if (!input.weightMin) {
@@ -280,28 +248,28 @@ function validate(input) {
   } else if (!/^([0-9])*$/.test(input.weightMin)) {
     errors.weightMin = "Minimun weight should be a number";
   } else if (input.weightMin < 1 || input.weightMin > 50) {
-    errors.weightMin =
-      "Minimun weight should be less than 50 kg cm and more than 0 kg";
+    errors.weightMin = "Minimun weight should be between 0 and 50 Kgs";
   }
 
   if (!input.weightMax) {
     errors.weightMax = "Maximun weight is required";
   } else if (!/^([0-9])*$/.test(input.weightMax)) {
     errors.weightMax = "Maximun weight should be a number";
-  } else if (input.weightMax <= input.weightMin || input.weightMax > 100) {
-    errors.weightMax =
-      "Minimun weight should be less than 50 kg cm and more than 0 kg";
+  } else if (input.weightMax > 100) {
+    errors.weightMax = "Maximum weight can't be more than 100 Kgs";
+  } else if (input.weightMax === input.weightMin) {
+    errors.weightMax = "Maximun weight can't be equal than minimun weight";
   }
 
   if (!input.life_span) {
     errors.life_span = "Life span is required";
-  } else if (!input.life_span.includes("years")) {
-    errors.life_span = "The age of the dog must include the word (years)";
+  } else if (!/^([0-9])*$/.test(input.life_span)) {
+    errors.life_span = "Dog's life span should be a number";
   }
 
   // if (!input.image) {
-  //   errors.image = "Image url is required";
-  // } else if (!input.image.includes("http")) {
+  //   input.image = "https://i.ytimg.com/vi/0oBx7Jg4m-o/maxresdefault.jpg";
+  // } else if (!/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/.test(input.image)) {
   //   errors.image = "The image should have a valid url";
   // }
 

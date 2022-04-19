@@ -2,11 +2,15 @@ import axios from "axios";
 
 export function getAllDogs() {
   return async function (dispatch) {
-    let dogs = await axios.get("http://localhost:3001/dogs");
-    return dispatch({
-      type: "GET_DOGS",
-      payload: dogs.data,
-    });
+    try {
+      let dog = await axios.get("http://localhost:3001/dogs");
+      return dispatch({
+        type: "GET_DOGS",
+        payload: dog.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
@@ -108,6 +112,16 @@ export function cleanDog() {
     payload: {},
   };
 }
+
+// export function orderWeight() {
+//   return async function (dispatch) {
+//     let order = await axios.get("http://localhost:3001/order");
+//     return dispatch({
+//       type: "GET_ORDER",
+//       payload: order.data,
+//     });
+//   };
+// }
 
 export function cleaner() {
   return {

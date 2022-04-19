@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
       life_span,
       image,
       temperament,
-    } = req.body;
+    } = req.body; //Estos son los datos que me llegan por body
     const createdDog = await Dog.create({
       name,
       heightMin,
@@ -22,30 +22,23 @@ router.post("/", async (req, res) => {
       weightMax,
       life_span,
       image,
-    }); //Estos son los datos que me llegan por body
+    });
     temperament.map(async (el) => {
       try {
-        let [id1, b1] = await Temperament.findAll({
-          //encontramos el temperamento "el"
+        let temps = await Temperament.findAll({
           where: { name: el },
         });
-        await createdDog.addTemperament(id1); //agrego temperamento "el" (id1) en el Dog que cree (createdDog)
+        await createdDog.addTemperament(temps);
       } catch (error) {
         res.send(error);
       }
     });
-    // let temperamentDb = await Temperament.findAll({
-    //   where: { name: temperaments }, //Donde el name sea igual al temperament que me llega por body
-    // }); //Esto lo traigo del modelo de Temperament
-    // createdDog.addTemperament(temperamentDb); //add es un metodo de sequelize que me trae de la tabla el parametro que le paso como parametro en este caso de Temperament
+
+    //add es un metodo de sequelize que me trae de la tabla el parametro que le paso como parametro en este caso de Temperament
     res.status(200).send("Dog successfully created!!!");
   } catch (error) {
     console.log(error);
   }
 });
-// let temperametNewDog = await Temperament.findAll({
-//   where: { name: temperament },
-// });
-// createdDog.addTemperament(temperametNewDog);
 
 module.exports = router;
