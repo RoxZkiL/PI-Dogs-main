@@ -94,9 +94,12 @@ function rootReducer(state = initialState, action) {
         temperaments: action.payload,
       };
     case "FILTERED_BY_TEMP":
-      let filteredDogies = state.allDogs.filter((el) => {
-        if (el.temperament?.includes(action.payload)) return el;
-      });
+      let filteredDogies = state.allDogs.filter((el) =>
+        el.temperament?.includes(action.payload) ? el : null
+      );
+      // let filteredDogies = state.allDogs.filter((el) => {
+      //   if (el.temperament?.includes(action.payload)) return el;
+      // });
       return {
         ...state,
         dogs: filteredDogies,
