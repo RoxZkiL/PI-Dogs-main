@@ -18,16 +18,16 @@ export default function Paginated({
       <nav>
         <ul className={style.paginado}>
           {currentPage > 1 ? (
-            <li className={style.li} onClick={() => paginated(currentPage - 1)}>
-              <a>Prev</a>
+            <li onClick={() => paginated(currentPage - 1)}>
+              <button className={style.li}>Prev</button>
             </li>
           ) : null}
-          <li className={style.li} onClick={() => paginated(currentPage)}>
-            <a>{currentPage}</a>
+          <li onClick={() => paginated(currentPage)}>
+            <button className={style.li}>{currentPage}</button>
           </li>
           {currentPage < allDogs / dogsPerPage ? (
-            <li className={style.li} onClick={() => paginated(currentPage + 1)}>
-              <a>Next</a>
+            <li onClick={() => paginated(currentPage + 1)}>
+              <button className={style.li}>Next</button>
             </li>
           ) : null}
         </ul>
@@ -36,20 +36,20 @@ export default function Paginated({
   );
 }
 
-{
-  /* {pageNumber?.map((number) => ( */
-}
-{
-  /* <li
-    className={style.li}
-    key={number}
-    onClick={() => paginated(number)}
-  >
-    <a>{number}</a> */
-}
-{
-  /* </li> */
-}
-{
-  /* ))} */
-}
+// {
+//   {pageNumber?.map((number) => (
+// }
+// {
+//    <li
+//     className={style.li}
+//     key={number}
+//     onClick={() => paginated(number)}
+//   >
+//     <a>{number}</a>
+// }
+// {
+//    </li>
+// }
+// {
+//    ))}
+// }

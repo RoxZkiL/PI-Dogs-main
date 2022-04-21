@@ -25,6 +25,8 @@
     transition: .2s;
     font-weight: bold;
     font-family: 'Kaushan Script', cursive;
+    color: aliceblue;
+    font-size: 18px;
   }
 
   .li:hover{

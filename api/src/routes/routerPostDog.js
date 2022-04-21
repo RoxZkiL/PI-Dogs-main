@@ -33,8 +33,6 @@ router.post("/", async (req, res) => {
         res.send(error);
       }
     });
-
-    //add es un metodo de sequelize que me trae de la tabla el parametro que le paso como parametro en este caso de Temperament
     res.status(200).send("Dog successfully created!!!");
   } catch (error) {
     console.log(error);

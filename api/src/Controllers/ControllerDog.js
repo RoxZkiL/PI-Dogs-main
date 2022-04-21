@@ -26,14 +26,8 @@ const getApiInfo = async function () {
 
 const getDBInfo = async function () {
   return await Dog.findAll({
-    //Con findAll me traigo toda la informacion de la base de datos
     include: {
-      model: Temperament, //Esta informacion tiene que incluir el modelo Temperament para que haga la relacion
-      // attributes: ["name"], // Traemos el atributo nombre que es lo que nos interesa, trae el perro y el atributo de su temperamento
-      // through: {
-      //   //mediante los atributos (va siempre)
-      //   attributes: [],
-      // },
+      model: Temperament,
     },
   });
 };

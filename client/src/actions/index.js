@@ -113,6 +113,13 @@ export function cleanDog() {
   };
 }
 
+export function cleaner() {
+  return {
+    type: "CLEANER",
+    payload: {},
+  };
+}
+
 // export function orderWeight() {
 //   return async function (dispatch) {
 //     let order = await axios.get("http://localhost:3001/order");
@@ -122,10 +129,3 @@ export function cleanDog() {
 //     });
 //   };
 // }
-
-export function cleaner() {
-  return {
-    type: "CLEANER",
-    payload: {},
-  };
-}

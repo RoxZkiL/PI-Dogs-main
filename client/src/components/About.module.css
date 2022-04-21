@@ -1,0 +1,10 @@
+.div{
+    padding-top: 2%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.div2{
+    padding-left: 4%;
+}
