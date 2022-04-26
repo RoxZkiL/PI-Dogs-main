@@ -97,9 +97,6 @@ function rootReducer(state = initialState, action) {
       let filteredDogies = state.allDogs.filter((el) =>
         el.temperament?.includes(action.payload) ? el : null
       );
-      // let filteredDogies = state.allDogs.filter((el) => {
-      //   if (el.temperament?.includes(action.payload)) return el;
-      // });
       return {
         ...state,
         dogs: filteredDogies,
