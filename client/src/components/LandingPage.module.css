@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 .body {
-    background: url("file:///D:/Descargas%20Chrome/peakpx%20(1).jpg");
+    background: url("./LandingPage.jpg");
     height: 100vh;
     display: flex;
     flex-direction: column;
