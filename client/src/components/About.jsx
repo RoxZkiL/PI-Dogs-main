@@ -15,7 +15,7 @@ export default function About() {
       </a>
       <div className={style.div2}>
         <a
-          href="https://www.linkedin.com/in/jes%C3%BAs-matute-079b0b209/"
+          href="https://www.linkedin.com/in/jesusmatute/"
           target="_blank"
           rel="noopener noreferrer"
         >
