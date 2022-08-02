@@ -69,7 +69,6 @@ export default function Filters() {
   //   setOrder(e.target.value);
   //   setCurrentPage(1);
   // }
-
   return (
     <div>
       {/* <button onClick={(e) => handleOrder(e)}>order button</button> */}
